@@ -18,9 +18,14 @@ class Solution
      */
     function isPalindrome($head)
     {
-        $len = count($head);
-        foreach($head as $key => $val){
-            if($val != $head[$len - $key - 1]){
+        while ($head->next != null || $head->val != null) {
+            $array[] = $head->val;
+            $head = $head->next;
+        }
+        unset($head);
+        $len = count($array);
+        foreach ($array as $key => $val) {
+            if ($val != $array[$len - $key - 1]) {
                 return false;
             }
         }
@@ -29,4 +34,4 @@ class Solution
 }
 
 $str = new Solution();
-var_dump($str->isPalindrome([1]));
+var_dump($str->isPalindrome([1, 2]));

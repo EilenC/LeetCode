@@ -29,6 +29,8 @@ func toHex(num int) string {
 	hex := "0123456789abcdef"
 	ans := ""
 	for num != 0 && len(ans) < 8 {
+		//题目规定num最大32位数字，所以< 8 判断
+		//&0xf 相当于取数字最低4位  与 % 16 是一样的操作
 		ans = string(hex[byte(num&0xf)]) + ans
 		num >>= 4
 	}

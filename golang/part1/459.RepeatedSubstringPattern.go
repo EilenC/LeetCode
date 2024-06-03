@@ -1,7 +1,5 @@
 package part1
 
-import "strings"
-
 //示例 1:
 //
 //输入: s = "abab"
@@ -19,38 +17,12 @@ import "strings"
 
 /*
 *
-1. 字符串长度奇数并且不全相等 直接返回false
-2. 循环字符串长度一半 一直循环到长度 超过匹配字符串s或者完相等
+1. 遍历字符串,从字符串第二位开始截断拼接截断字符串,当i走到字符串一半的时候若两个字符串拼接起来 == 远字符串则 true
 */
 func repeatedSubstringPattern(s string) bool {
-	ls := len(s)
-	if ls%2 != 0 {
-		var total int
-		for _, v := range s {
-			total += int(v)
-		}
-		if total%int(s[0]) != 0 {
-			return false
-		}
+	length := len(s)
+	if length == 1 {
+		return false
 	}
-	if ls == 2 {
-		return s[0] == s[1]
-	}
-	var index int
-	for {
-		for i := 2 + index; i <= ls>>1; i++ {
-			result := strings.Builder{}
-			block := s[index:i]
-			for j := 0; j < ls; j += i {
-				result.WriteString(block)
-			}
-			if result.String() == s {
-				return true
-			}
-		}
-		if index >= ls {
-			return false
-		}
-		index++
-	}
+	return s[length/2:]+s[:length/2] == s
 }

@@ -38,6 +38,9 @@ package part1
 2. 最后返回原list即可
 */
 func deleteDuplicates(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
 	next := head
 	for next.Next != nil {
 		if next.Val == next.Next.Val {

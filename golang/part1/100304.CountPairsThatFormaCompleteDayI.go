@@ -41,8 +41,8 @@ package part1
 *
 1.  循环遍历整个数组每次匹配是否加数%24 == 0
 */
-func countCompleteDayPairs(hours []int) int64 {
-	var count int64
+func countCompleteDayPairs(hours []int) int {
+	var count int
 	for i := 0; i < len(hours); i++ {
 		for j := i + 1; j < len(hours); j++ {
 			if (hours[i]+hours[j])%24 == 0 {

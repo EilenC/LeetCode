@@ -31,13 +31,20 @@ num 不含前导零
 *
 1. 从尾部遍历字符串并且记录下标,遇到第一个非0的字符串这跳出遍历返回下标前的所有字符串
 */
+//func removeTrailingZeros(num string) string {
+//	var i int
+//	var by = []byte(num)
+//	for i = len(by) - 1; i >= 0; i-- {
+//		if by[i]^'0' != 0 {
+//			break
+//		}
+//	}
+//	return string(by[:i+1])
+//}
+
 func removeTrailingZeros(num string) string {
-	var i int
-	var by = []byte(num)
-	for i = len(by) - 1; i >= 0; i-- {
-		if by[i]^'0' != 0 {
-			break
-		}
+	for len(num) > 0 && num[len(num)-1] == '0' {
+		num = num[:len(num)-1]
 	}
-	return string(by[:i+1])
+	return num
 }

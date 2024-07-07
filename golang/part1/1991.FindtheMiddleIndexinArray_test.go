@@ -67,6 +67,13 @@ func Test_findMiddleIndex(t *testing.T) {
 			},
 			want: 0,
 		},
+		{
+			name: "输入：nums = [2, 1, -1]",
+			args: args{
+				nums: []int{2, 1, -1},
+			},
+			want: 0,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

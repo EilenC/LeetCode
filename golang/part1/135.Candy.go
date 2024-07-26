@@ -32,8 +32,8 @@ n == ratings.length
 func candy(ratings []int) (ans int) {
 	n := len(ratings)
 	left := make([]int, n)
-	for i := 1; i < n; i++ {
-		if ratings[i] > ratings[i-1] {
+	for i, r := range ratings {
+		if i > 0 && r > ratings[i-1] {
 			left[i] = left[i-1] + 1
 		} else {
 			left[i] = 1

@@ -1,7 +1,5 @@
 package part1
 
-import "slices"
-
 /*
 *
 给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
@@ -31,7 +29,7 @@ func groupAnagrams(strs []string) [][]string {
 	m := map[string][]string{}
 	for _, s := range strs {
 		t := []byte(s)
-		slices.Sort(t)
+		sortBytes(t)
 		m[string(t)] = append(m[string(t)], s) // sortedS 相同的字符串分到同一组
 	}
 	ans := make([][]string, 0, len(m)) // 预分配空间
@@ -39,4 +37,13 @@ func groupAnagrams(strs []string) [][]string {
 		ans = append(ans, v)
 	}
 	return ans
+}
+func sortBytes(b []byte) {
+	for i := 0; i < len(b); i++ {
+		for j := i + 1; j < len(b); j++ {
+			if b[i] > b[j] {
+				b[i], b[j] = b[j], b[i]
+			}
+		}
+	}
 }
